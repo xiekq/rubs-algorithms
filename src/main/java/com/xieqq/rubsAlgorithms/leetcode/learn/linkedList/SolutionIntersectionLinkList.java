@@ -9,69 +9,66 @@ public class SolutionIntersectionLinkList {
 
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         //只要有一个节点的则不会交叉
-        if (null == headA || null == headB || null == headA.next || null == headB.next) {
+        if (null == headA || null == headB) {
             return null;
+        }
+        if(headA == headB){
+            return headA;
         }
 
         //遍历其中一个链表
-        ListNode nodePA = headA;
-        ListNode nodePB = headB;
+        ListNode tempA = headA, tempB = headB;
+        ListNode tailA = null,tailB = null;
 
-        int nodeALen = 0;
-        int nodeBLen = 0;
-        int index = 0;
-        while (true) {
-            if ((nodeALen > 0 && nodeBLen > 0) && index > (nodeALen + nodeBLen)) {
-                break;
+        while (tempA != tempB) {
+            if ((tailB != null && tailA != null) && tempA == tailB) {
+                return null;
             }
-            if (nodePA.val == nodePB.val) {
-                return nodePA;
-            }
-            if (null == nodePA.next) {
-                nodeALen = index;
-                nodePA = headB;
+            if (null == tempA.next) {
+                tailA = tempA;
+                tempA = headB;
             } else {
-                nodePA = nodePA.next;
+                tempA = tempA.next;
             }
-
-            if (null == nodePB.next) {
-                nodeBLen = index;
-                nodePB = headA;
+            if (null == tempB.next) {
+                tailB = tempB;
+                tempB = headA;
             } else {
-                nodePB = nodePB.next;
+                tempB = tempB.next;
             }
-            index++;
         }
-        System.out.println(index);
-        return null;
+
+        return tempA;
     }
 
     public static void main(String[] args) {
-        ListNode n6 = new ListNode(6);
-        ListNode n7 = new ListNode(7);
-        ListNode n8 = new ListNode(8);
-        ListNode n9 = new ListNode(9);
-        n6.next = n7;
-        n7.next = n8;
-        n8.next = n9;
 
-        ListNode n3 = new ListNode(3);
+
+        ListNode n8 = new ListNode(8);
         ListNode n4 = new ListNode(4);
         ListNode n5 = new ListNode(5);
-        n3.next = n4;
+        n8.next = n4;
         n4.next = n5;
-        n5.next = n6;
 
-        ListNode n1 = new ListNode(1);
-        ListNode n2 = new ListNode(2);
-        n1.next = n2;
+        ListNode a4 = new ListNode(4);
+        ListNode a1 = new ListNode(1);
+        a4.next = a1;
+        a1.next = n8;
 
-        ListNode resultNode = getIntersectionNode(n3, n1);
-        if(null == resultNode){
+
+        ListNode b5 = new ListNode(5);
+        ListNode b0 = new ListNode(0);
+        ListNode b1 = new ListNode(1);
+        b5.next = b0;
+        b0.next = b1;
+        b1.next = n8;
+
+        ListNode resultNode = getIntersectionNode(a4, b5);
+        if (null == resultNode) {
             System.out.println(-1);
 
-        }else{
-            System.out.println(getIntersectionNode(n3, n1).val);
+        } else {
+            System.out.println(resultNode.val);
         }
 
     }
