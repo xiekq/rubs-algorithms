@@ -15,13 +15,13 @@ public class SolutionIsPalindromeLinkList {
             return head.val == head.next.val;
         }
 
-        ListNode quickNode = head.next.next;
+        ListNode fastNode = head.next.next;
         ListNode slowNode = head.next;
         ListNode slowPreNode = head;
         boolean isComparing = false;
         while (null != slowNode) {
-            if (null != quickNode && null != quickNode.next) {
-                quickNode = quickNode.next.next;
+            if (null != fastNode && null != fastNode.next) {
+                fastNode = fastNode.next.next;
 
                 //链表反转
                 slowPreNode.next = slowNode.next;
@@ -32,7 +32,7 @@ public class SolutionIsPalindromeLinkList {
                 //首次交换
                 if (!isComparing) {
                     //节点个数为奇数
-                    if (null != quickNode) {
+                    if (null != fastNode) {
                         slowNode = slowNode.next;
                     }
                     isComparing = true;

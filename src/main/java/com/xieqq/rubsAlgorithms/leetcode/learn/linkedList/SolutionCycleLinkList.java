@@ -11,12 +11,12 @@ public class SolutionCycleLinkList {
             if (null == head || null == head.next) {
                 return false;
             }
-            ListNode stepOneNode = head;
-            ListNode stepTwoNode = head;
-            while (null != stepTwoNode && null != stepTwoNode.next) {
-                stepOneNode = stepOneNode.next;
-                stepTwoNode = stepTwoNode.next.next;
-                if (null != stepTwoNode && stepOneNode == stepTwoNode) {
+            ListNode slowNode = head;
+            ListNode fastNode = head;
+            while (null != fastNode && null != fastNode.next) {
+                slowNode = slowNode.next;
+                fastNode = fastNode.next.next;
+                if (null != fastNode && slowNode == fastNode) {
                     return true;
                 }
             }
