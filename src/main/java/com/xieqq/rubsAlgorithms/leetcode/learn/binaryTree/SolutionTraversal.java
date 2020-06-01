@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 二叉树前中后序遍历
  */
-public class SolutionPreorderTraversal {
+public class SolutionTraversal {
     List<Integer> orderList = new ArrayList<>();
 
     public List<Integer> postorderTraversal(TreeNode root) {
