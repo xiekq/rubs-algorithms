@@ -9,19 +9,19 @@ import java.util.Queue;
 
 public class SolutionLevelTraversal {
 
-    public List<List<Integer>> leverOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> orderList = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         if (null != root) {
             int level = 0;
             int size = 1;
             queue.add(root);
-            return leverOrder(orderList, queue, level, size);
+            return levelOrder(orderList, queue, level, size);
         }
         return orderList;
     }
 
-    public List<List<Integer>> leverOrder(List<List<Integer>> orderList, Queue<TreeNode> queue, int level, int preSize) {
+    public List<List<Integer>> levelOrder(List<List<Integer>> orderList, Queue<TreeNode> queue, int level, int preSize) {
         List<Integer> leverList = new ArrayList<>();
         int size = 0;
         while (preSize > 0) {
@@ -41,7 +41,7 @@ public class SolutionLevelTraversal {
         orderList.add(leverList);
 
         if (size > 0) {
-            return leverOrder(orderList, queue, ++level, size);
+            return levelOrder(orderList, queue, ++level, size);
         }
         return orderList;
     }
@@ -64,7 +64,7 @@ public class SolutionLevelTraversal {
         level1Right.left = level2Left;
 
         SolutionLevelTraversal levelTraversal = new SolutionLevelTraversal();
-        List<List<Integer>> orderList = levelTraversal.leverOrder(root);
+        List<List<Integer>> orderList = levelTraversal.levelOrder(root);
         StdOut.println(orderList);
 
     }
