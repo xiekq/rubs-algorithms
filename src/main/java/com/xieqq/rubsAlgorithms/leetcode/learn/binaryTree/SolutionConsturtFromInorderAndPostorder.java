@@ -13,6 +13,10 @@ public class SolutionConsturtFromInorderAndPostorder {
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
 
+        if (inorder.length == 0) {
+            return null;
+        }
+
         if (postorder.length == 1) {
             return new TreeNode(postorder[0]);
         }
@@ -39,7 +43,7 @@ public class SolutionConsturtFromInorderAndPostorder {
             int[] inorderRight = new int[inorder.length - 1 - midIndex];
             int[] postorderRight = new int[inorder.length - 1 - midIndex];
             for (int i = 0; i < inorderRight.length; i++) {
-                inorderRight[i] = inorder[midIndex+1];
+                inorderRight[i] = inorder[midIndex + 1];
                 postorderRight[i] = postorder[midIndex];
                 midIndex++;
             }
@@ -53,11 +57,11 @@ public class SolutionConsturtFromInorderAndPostorder {
 //        int[] inorder = new int[]{9,3,15,20,7};
 //        int[] postorder = new int[]{9,15,7,20,3};
 
-        int[] inorder = new int[]{1,4,7,2,6,5,3,8};
-        int[] postorder = new int[]{1,7,2,4,5,8,3,6};
+        int[] inorder = new int[]{1, 4, 7, 2, 6, 5, 3, 8};
+        int[] postorder = new int[]{1, 7, 2, 4, 5, 8, 3, 6};
 
 
-        TreeNode root = consturtFromInorderAndPostorder.buildTree(inorder,postorder);
+        TreeNode root = consturtFromInorderAndPostorder.buildTree(inorder, postorder);
         StdOut.println(root.val);
     }
 
