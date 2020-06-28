@@ -1,6 +1,6 @@
 package com.xieqq.rubsAlgorithms.algs4.algorithms;
 
-public class merge extends AbstractSort {
+public class Merge extends AbstractSort {
 
     private Comparable[] tmp;
 
